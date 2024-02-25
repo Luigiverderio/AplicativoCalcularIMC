@@ -36,15 +36,16 @@ export default function Form() {
   return (
     <View>
       <View>
-        <Text>Digite sua altura em metros:</Text>
+        <Text>Altura</Text>
         <TextInput
           value={altura}
           onChangeText={setAltura}
           placeholder='Ex:1.75'
           keyboardType='numeric'>
         </TextInput>
-        <Text>Digite seu peso em Kg:</Text>
+        <Text>Peso</Text>
         <TextInput
+          style={styles.input}
           onChangeText={setPeso}
           value={peso}
           placeholder='Ex:65'

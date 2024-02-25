@@ -7,7 +7,6 @@ import {
 
   import React from "react";
   import Title from './src/components/h1'; //Importando os componentes do meu app
-  import Main from './src/components/main';
 
 
 
@@ -16,17 +15,14 @@ export default function App() { //Aqui definimos a função App com uma área vi
   return (
     <View style={styles.container}>
       <Title/>
-      <Main/>
-      <StatusBar style="auto" />
     </View>
   );
 }
 
+//Estilos de Aplicação
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
