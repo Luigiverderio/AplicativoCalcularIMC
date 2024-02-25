@@ -1,28 +1,14 @@
-import { StatusBar } from 'expo-status-bar'; //Aqui estamos importando a barra status do celular.
-import {
-   StyleSheet, 
-   Text, 
-   View 
-  } from 'react-native'; //Aqui estamos importando as funções do react-native
+import { StyleSheet, View } from 'react-native'; //Aqui estamos importando as funções do react-native
+import React from "react";
+import styles from "./appStyle"
+import Title from './src/components/title'; //Importando os componentes do meu app
+import Form from './src/components/form'
 
-  import React from "react";
-  import Title from './src/components/h1'; //Importando os componentes do meu app
-
-
-
-export default function App() { //Aqui definimos a função App com uma área visível.
-
+export default function App() { //Exportando a função app para o expo
   return (
     <View style={styles.container}>
       <Title/>
+      <Form/>
     </View>
   );
 }
-
-//Estilos de Aplicação
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});

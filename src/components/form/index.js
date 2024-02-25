@@ -1,59 +1,61 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Text,
-  TextInput,
-  View
-} from "react-native";
-
-import ResultImc from "./result-IMC"; //Puxando a função ResultImc
-
-
+import { Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
+import ResultImc from './resImc';
+import styles from './style'
 export default function Form() {
   const [altura, setAltura] = useState(null);
   const [peso, setPeso] = useState(null);
-  const [msgImc, setmsgImc] = useState('Preencha a altura e o peso!')
+  const [msgImc, setMsgImc] = useState('Preencha com peso e altura!');
   const [imc, setImc] = useState(null)
   const [textButton, setTextButton] = useState('Calcular')
-  function calculoImc() {
-    return setImc((peso / (altura * altura)).toFixed(2))
+  function calcular() {
+    return setImc((peso / (altura * altura)).toFixed(2)) //Aqui criei uma função que irá setar o Imc da pessoa de acordo com os valores recebidos
   }
-  function validarImc() {
+  function validarimc() {
     if (peso != null && altura != null) {
-      calculoImc()
+      calcular()
       setAltura(null)
       setPeso(null)
-      setmsgImc()
+      setMsgImc('Seu IMC é:')
       setTextButton('Calcular novamente')
       return
     }
-
-    
     setImc(null)
     setTextButton('Calcular')
-    setmsgImc('Preencha o Peso e Altura')
+    setMsgImc('Preencha com o peso e altura')
   }
-  return (
-    <View>
-      <View>
-        <Text>Altura</Text>
-        <TextInput
-          value={altura}
-          onChangeText={setAltura}
-          placeholder='Ex:1.75'
-          keyboardType='numeric'>
-        </TextInput>
-        <Text>Peso</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={setPeso}
-          value={peso}
-          placeholder='Ex:65'
-          keyboardType='numeric'>
-        </TextInput>
-        <Button title={textButton} onPress={validarImc}></Button>
+
+    return (
+      <View style={styles.formContext}>
+        <View style={styles.form}>
+          <Text style={styles.formLabel}>
+            Altura
+          </Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={setAltura}
+            value={altura}
+            placeholder="Ex: 1.75"
+            keyboardType="numeric">
+          </TextInput>
+          <Text style={styles.formLabel}>
+            Peso
+          </Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={setPeso}
+            value={peso}
+            placeholder="Ex: 65"
+            keyboardType="numeric">
+          </TextInput>
+          <TouchableOpacity 
+          style={styles.buttonCalcular}
+          onPress={() => {validarimc()}}>
+          
+          <Text style={styles.textButton}>{textButton}</Text>
+          </TouchableOpacity>
+        </View> 
+        <ResultImc style={styles.textButton} txtRes={msgImc} resultImc={imc}></ResultImc>
       </View>
-      <ResultImc messageResultImc={msgImc} resultImc={imc}></ResultImc>
-    </View>
-  )
+    );
 }
