@@ -3,10 +3,10 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   boxTitle: {
     alignItems:"center",
-    height: '20%',
+    height: '24%',
   },
   textTitle: {
-    color:"#FF0043",
+    color:"black",
     fontSize:24,
     fontWeight:"bold"
   },
