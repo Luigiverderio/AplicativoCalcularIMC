@@ -3,26 +3,25 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   resultImc: {
     flex: 1,
-    marginTop: 15,
-    paddingTop: 60,
+    paddingTop: 30,
     borderRadius: 50,
     alignItems: 'center',
-    width: '100%'
+    width: '100%',
+    color:'red'
   },
   numberImc: {
     fontSize: 48,
     fontWeight: 'bold',
-    color: '#FF0043'
+    color: '#FF0043',
   },
   information: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#FF0043'
+    color: '#FF0043',
   },
   shareButton:{
-    width:"100%",
     alignItem:"center",
-    marginBottom:10,
+    marginBottom:10
   },
   share:{
     backgroundColor:"#1877f2",
