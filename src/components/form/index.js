@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, Button, TouchableOpacity, Vibration} from 'react-native';
 import ResultImc from './resImc';
 import styles from './style'
 export default function Form() {
@@ -8,18 +8,17 @@ export default function Form() {
   const [msgImc, setMsgImc] = useState('Preencha com peso e altura!');
   const [imc, setImc] = useState(null)
   const [textButton, setTextButton] = useState('Calcular')
-  const [errorMesage, setErrorMessage] = useState(null)
-  
+  const [errorMesage, seterrorMessage] = useState(null)
   function calcular() {
     return setImc((peso / (altura * altura)).toFixed(2)) //Aqui criei uma função que irá setar o Imc da pessoa de acordo com os valores recebidos
   }
 
-function verificarImc(){
-  if(imc == null){
-    Vibration.vibrate()
-    setErrorMessage('Campo Obrigatório')
-}
-
+  function verificarImc(){
+    if(imc == null){
+      Vibration.vibrate();
+      seterrorMessage("Campo obrigatório*")
+    }
+  }
 
   function validarimc() {
     if (peso != null && altura != null) {
@@ -28,9 +27,11 @@ function verificarImc(){
       setPeso(null)
       setMsgImc('Seu IMC é:')
       setTextButton('Calcular novamente')
-      setErrorMessage(null)
+      seterrorMessage(null)
       return
     }
+
+    verificarImc()
     setImc(null)
     setTextButton('Calcular')
     setMsgImc('Preencha com o peso e altura')
@@ -42,6 +43,7 @@ function verificarImc(){
           <Text style={styles.formLabel}>
             Altura
           </Text>
+          <Text style={styles.errorMessage}>{errorMesage}</Text>
           <TextInput
             style={styles.input}
             onChangeText={setAltura}
@@ -52,6 +54,7 @@ function verificarImc(){
           <Text style={styles.formLabel}>
             Peso
           </Text>
+          <Text style={styles.errorMessage}>{errorMesage}</Text>
           <TextInput
             style={styles.input}
             onChangeText={setPeso}
