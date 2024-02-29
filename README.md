@@ -1,5 +1,5 @@
-## Criação do aplicativo para CELULAR  
-# IMC (Índice de Massa Corporal) 
+# Criação do aplicativo para CELULAR  
+## IMC (Índice de Massa Corporal) 
 Aplicativo que calcula e exibe o índice de massa corporal do usuário, comumente utilizado para aqueles que querem saber qual seu grau de saúde de acordo com o IMC.
 ---
 # Tecnologias utilizadas:
