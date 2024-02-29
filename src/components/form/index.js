@@ -8,9 +8,19 @@ export default function Form() {
   const [msgImc, setMsgImc] = useState('Preencha com peso e altura!');
   const [imc, setImc] = useState(null)
   const [textButton, setTextButton] = useState('Calcular')
+  const [errorMesage, setErrorMessage] = useState(null)
+  
   function calcular() {
     return setImc((peso / (altura * altura)).toFixed(2)) //Aqui criei uma função que irá setar o Imc da pessoa de acordo com os valores recebidos
   }
+
+function verificarImc(){
+  if(imc == null){
+    Vibration.vibrate()
+    setErrorMessage('Campo Obrigatório')
+}
+
+
   function validarimc() {
     if (peso != null && altura != null) {
       calcular()
@@ -18,6 +28,7 @@ export default function Form() {
       setPeso(null)
       setMsgImc('Seu IMC é:')
       setTextButton('Calcular novamente')
+      setErrorMessage(null)
       return
     }
     setImc(null)

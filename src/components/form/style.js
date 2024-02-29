@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     padding:10,
   },
   formLabel: {
-    color:'#00000',
+    color:'black',
     fontSize:20,
     paddingLeft:20,
   },
