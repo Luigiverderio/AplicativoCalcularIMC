@@ -8,6 +8,7 @@ Aplicativo que calcula e exibe o índice de massa corporal do usuário, comument
 ---
 ## Funcionalidades:
 - Calcula o **IMC**
+- Integração com o GitHub desktop
 
 
 > [!NOTE]
