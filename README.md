@@ -10,7 +10,6 @@ Aplicativo que calcula e exibe o índice de massa corporal do usuário, comument
 - Calcula o **IMC**
 - Integração com o GitHub desktop
 
-
 > [!NOTE]
 > Esse site foi projetado com conteúdos do curso do SENAI/SESI  - Desenvolvimento de Sistemas.
 
