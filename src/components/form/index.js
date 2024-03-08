@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Text, View, TextInput, Button, TouchableOpacity, Vibration} from 'react-native';
+import {
+  Text,
+  View,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  Vibration,
+  Keyboard,
+  Pressable
+} from 'react-native';
 import ResultImc from './resImc';
 import styles from './style'
 export default function Form() {
@@ -13,8 +22,8 @@ export default function Form() {
     return setImc((peso / (altura * altura)).toFixed(2)) //Aqui criei uma função que irá setar o Imc da pessoa de acordo com os valores recebidos
   }
 
-  function verificarImc(){
-    if(imc == null){
+  function verificarImc() {
+    if (imc == null) {
       Vibration.vibrate();
       seterrorMessage("Campo obrigatório*")
     }
@@ -28,6 +37,7 @@ export default function Form() {
       setMsgImc('Seu IMC é:')
       setTextButton('Calcular novamente')
       seterrorMessage(null)
+      Keyboard.dismiss()
       return
     }
 
@@ -37,7 +47,8 @@ export default function Form() {
     setMsgImc('Preencha com o peso e altura')
   }
 
-    return (
+  return (
+    <Pressable>
       <View style={styles.formContext}>
         <View style={styles.form}>
           <Text style={styles.formLabel}>
@@ -62,14 +73,14 @@ export default function Form() {
             placeholder="Ex: 65"
             keyboardType="numeric">
           </TextInput>
-          <TouchableOpacity 
-          style={styles.buttonCalcular}
-          onPress={() => {validarimc()}}>
-          
-          <Text style={styles.textButton}>{textButton}</Text>
+          <TouchableOpacity
+            style={styles.buttonCalcular}
+            onPress={() => { validarimc() }}>
+            <Text style={styles.textButton}>{textButton}</Text>
           </TouchableOpacity>
-        </View> 
+        </View>
         <ResultImc style={styles.textButton} txtRes={msgImc} resultImc={imc}></ResultImc>
       </View>
-    );
+    </Pressable>
+  );
 }
